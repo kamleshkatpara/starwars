@@ -1,0 +1,69 @@
+<mat-card class="example-card">
+    <div class="people-loading-shade" *ngIf="isLoading">
+        <mat-spinner></mat-spinner>
+    </div>
+
+    <div class="people-table-container">
+        <mat-icon class="modalclose" matDialogClose>close</mat-icon>
+        <mat-card-content>
+            <mat-list>
+                <mat-list-item>Name : {{ character.character.name }}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item *ngIf="character.character.gender !== '' && character.character.gender !== 'n/a'">
+                    Gender : {{ character.character.gender }}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item
+                    *ngIf="character.character.birth_year !== '' && character.character.birth_year !== 'unknown'">
+                    Birth Year : {{ character.character.birth_year }}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>Eye Color : &nbsp;<mat-icon [style.color]="character.character.eye_color != 'unknown' ? 
+                    character.character.eye_color : 'black'" aria-hidden="false">visibility</mat-icon>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>Skin Color : {{ character.character.skin_color }}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>Films :</mat-list-item>
+                <li *ngFor="let film of character.character.cfilms">
+                    <span class="badge">{{ film }}</span>
+                </li><br />
+                <mat-divider></mat-divider>
+                <div *ngIf="character.character.hair_color !== '' && character.character.hair_color !== 'n/a'">
+                    <mat-list-item>
+                        Hair Color : {{ character.character.hair_color }}</mat-list-item>
+                    <mat-divider></mat-divider>
+
+                </div>
+                <mat-list-item>Height : {{ character.character.height }}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>Mass : {{ character.character.mass }}</mat-list-item>
+                <mat-divider></mat-divider>
+                <div *ngIf="character.character.chomeworld != ''">
+                    <mat-list-item>HomeWorld : &nbsp;<span
+                            *ngFor="let home of character.character.chomeworld">{{ home }}</span>
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                </div>
+                <div *ngIf="character.character.cspecies != ''">
+                    <mat-list-item>Species : &nbsp;<span
+                            *ngFor="let specie of character.character.cspecies">{{ specie }}</span>
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                </div>
+                <div *ngIf="character.character.cstarships != ''">
+                    <mat-list-item>Starships :</mat-list-item>
+                    <li *ngFor="let starship of character.character.cstarships">
+                        <span class="badge">{{ starship }}</span>
+                    </li><br />
+                    <mat-divider></mat-divider>
+                </div>
+                <div *ngIf="character.character.cvehicles != ''">
+                    <mat-list-item>Vehicles :</mat-list-item>
+                    <li *ngFor="let vehicle of character.character.cvehicles">
+                        <span class="badge">{{ vehicle }}</span>
+                    </li><br />
+                    <mat-divider></mat-divider>
+                </div>
+            </mat-list>
+        </mat-card-content>
+    </div>
+</mat-card>
